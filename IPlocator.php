@@ -34,20 +34,20 @@ class IPlocator{
 		$ch = curl_init("http://extreme-ip-lookup.com/json/".$ip."");
 
 		// Set cURL options
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); 
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); 
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  
 
 		// Send the request & save response to $output 
-        $output = curl_exec($ch);   
+		$output = curl_exec($ch);   
 
-        // Close request to clear up some resources    
-        curl_close($ch);
+		// Close request to clear up some resources    
+		curl_close($ch);
 
-        // Return output into array
-        return $this->convertJsonToArray($output);
+		// Return output into array
+		return $this->convertJsonToArray($output);
 	}
 
 	/**
