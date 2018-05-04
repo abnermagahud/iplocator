@@ -8,14 +8,22 @@ class IPlocator{
 	
 	/**
 	 * Locate the IP address
-	 * @param  string $ip 	IP address
+	 * @param  string $ip 		IP address to locate
 	 * @return array
 	 */
 	public function locateIP($ip)
 	{
 		if(!empty($ip))
 		{
-			return $this->call($ip);
+			if($this->validateIP($ip))
+			{
+				return $this->call($ip);
+			}
+			else
+			{
+				echo "Invalid IP address";
+			}
+			
 		}
 		else
 		{
@@ -25,7 +33,7 @@ class IPlocator{
 
 	/**
 	 * Call the IP locator API
-	 * @param  string $ip	IP address
+	 * @param  string $ip		IP address
 	 * @return array
 	 */
 	public function call($ip)
@@ -51,8 +59,25 @@ class IPlocator{
 	}
 
 	/**
+	 * Validate the IP address if it is correct format
+	 * @param  string 		IP address to validate
+	 * @return boolean
+	 */
+	public function validateIP($ip)
+	{
+		if (filter_var($ip, FILTER_VALIDATE_IP)) 
+		{
+		    return true;
+		} 
+		else 
+		{
+		    return false;
+		}
+	}
+
+	/**
 	 * Convert JSON data into array
-	 * @param  string $json JSON data
+	 * @param  string $json 	JSON data
 	 * @return array
 	 */
 	public function convertJsonToArray($json)
