@@ -2,11 +2,14 @@
 
 # Usage
     <?php
-    require_once('IPlocator.php');
+        require_once('IPlocator.php');
 
-    $locator = new IPlocator;
+        $locator = new IPlocator;
 
-    $ip = "127.0.0.1";
-    $results =  $locator->locateIP($ip);
+        $ip = "127.0.0.1";
+        $results =  $locator->locateIP($ip);
 
     ?>
+
+# Documentation
+See http://extreme-ip-lookup.com/
